@@ -62,31 +62,41 @@ user_growth_insight.ensure_desk_styles = function () {
         display: none !important;
       }
 
+      body.ugi-route-dashboard .navbar,
       body.ugi-route-dashboard .page-head {
-        min-height: 52px !important;
-      }
-
-      body.ugi-route-dashboard .page-head .page-title {
-        min-height: 40px !important;
+        display: none !important;
       }
 
       body.ugi-route-dashboard .page-form {
-        padding-top: 4px !important;
-        padding-bottom: 4px !important;
+        display: none !important;
       }
 
+      body.ugi-route-dashboard .page-container,
+      body.ugi-route-dashboard .page-body,
       body.ugi-route-dashboard .page-content,
       body.ugi-route-dashboard .layout-main-section {
+        width: 100vw !important;
+        max-width: none !important;
+        height: 100vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #060809 !important;
         overflow: hidden !important;
       }
 
       body.ugi-route-dashboard .ugi-screen {
         box-sizing: border-box !important;
-        height: calc(100vh - 148px) !important;
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 2000 !important;
+        width: 100vw !important;
+        height: 100vh !important;
         min-height: 0 !important;
         overflow: hidden !important;
-        margin: -15px -15px 0 !important;
-        padding: 18px 28px 20px !important;
+        margin: 0 !important;
+        padding: 22px 28px 24px !important;
         background:
           radial-gradient(circle at 12% 12%, rgba(113, 112, 255, 0.2), transparent 28%),
           radial-gradient(circle at 82% 18%, rgba(194, 239, 78, 0.1), transparent 24%),
@@ -94,32 +104,109 @@ user_growth_insight.ensure_desk_styles = function () {
       }
 
       body.ugi-route-dashboard .ugi-hero {
-        margin-bottom: 10px !important;
+        display: grid !important;
+        grid-template-columns: minmax(360px, 0.9fr) minmax(560px, 1.1fr) !important;
+        align-items: start !important;
+        gap: 20px !important;
+        margin-bottom: 14px !important;
       }
 
       body.ugi-route-dashboard .ugi-hero h1 {
         margin: 4px 0 0 !important;
         color: rgba(247, 248, 248, 0.82) !important;
-        font-size: clamp(30px, 3vw, 42px) !important;
+        font-size: clamp(30px, 2.8vw, 48px) !important;
         font-weight: 520 !important;
         line-height: 1 !important;
         letter-spacing: 0 !important;
       }
 
-      body.ugi-route-dashboard .ugi-kpis {
-        grid-template-columns: repeat(5, minmax(130px, 1fr)) !important;
+      body.ugi-route-dashboard .ugi-command {
+        display: grid !important;
         gap: 10px !important;
-        margin-bottom: 10px !important;
+        justify-items: end !important;
+      }
+
+      body.ugi-route-dashboard .ugi-filters,
+      body.ugi-route-dashboard .ugi-actions {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 8px !important;
+        min-width: 0 !important;
+      }
+
+      body.ugi-route-dashboard .ugi-filter {
+        display: grid !important;
+        grid-template-columns: auto minmax(112px, 1fr) !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin: 0 !important;
+        padding: 7px 10px !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 8px !important;
+        background: rgba(255, 255, 255, 0.055) !important;
+      }
+
+      body.ugi-route-dashboard .ugi-filter span {
+        color: rgba(208, 214, 224, 0.7) !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+      }
+
+      body.ugi-route-dashboard .ugi-filter select {
+        width: 100% !important;
+        min-width: 0 !important;
+        border: 0 !important;
+        outline: none !important;
+        background: transparent !important;
+        color: #f7f8f8 !important;
+        font-size: 12px !important;
+      }
+
+      body.ugi-route-dashboard .ugi-filter option {
+        color: #111827 !important;
+      }
+
+      body.ugi-route-dashboard .ugi-actions a,
+      body.ugi-route-dashboard .ugi-actions button,
+      body.ugi-route-dashboard .ugi-time {
+        min-height: 34px !important;
+        padding: 8px 11px !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 999px !important;
+        background: rgba(255, 255, 255, 0.055) !important;
+        color: #d0d6e0 !important;
+        font-size: 12px !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        white-space: nowrap !important;
+      }
+
+      body.ugi-route-dashboard .ugi-actions button {
+        cursor: pointer !important;
+      }
+
+      body.ugi-route-dashboard .ugi-actions button[data-action="refresh"] {
+        color: #101405 !important;
+        border-color: transparent !important;
+        background: #c2ef4e !important;
+      }
+
+      body.ugi-route-dashboard .ugi-kpis {
+        grid-template-columns: repeat(5, minmax(150px, 1fr)) !important;
+        gap: 10px !important;
+        margin-bottom: 12px !important;
       }
 
       body.ugi-route-dashboard .ugi-kpi {
-        min-height: 92px !important;
-        padding: 12px 14px !important;
+        min-height: 88px !important;
+        padding: 12px 15px !important;
+        box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.02), 0 12px 36px rgba(0, 0, 0, 0.2) !important;
       }
 
       body.ugi-route-dashboard .ugi-kpi strong {
-        margin-top: 8px !important;
-        font-size: clamp(24px, 2vw, 32px) !important;
+        margin-top: 7px !important;
+        font-size: clamp(24px, 1.9vw, 34px) !important;
       }
 
       body.ugi-route-dashboard .ugi-kpi em {
@@ -127,16 +214,17 @@ user_growth_insight.ensure_desk_styles = function () {
       }
 
       body.ugi-route-dashboard .ugi-main {
-        height: calc(100% - 200px) !important;
+        height: calc(100vh - 220px) !important;
         display: grid !important;
-        grid-template-columns: minmax(0, 1.5fr) minmax(245px, 0.72fr) minmax(245px, 0.72fr) !important;
+        grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.78fr) minmax(320px, 0.78fr) !important;
         grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
-        gap: 10px !important;
+        gap: 12px !important;
       }
 
       body.ugi-route-dashboard .ugi-panel {
         min-height: 0 !important;
-        padding: 14px 15px !important;
+        padding: 15px 16px !important;
+        box-shadow: inset 0 0 16px rgba(255, 255, 255, 0.02), 0 14px 42px rgba(0, 0, 0, 0.22) !important;
       }
 
       body.ugi-route-dashboard .ugi-panel-large {
@@ -160,7 +248,7 @@ user_growth_insight.ensure_desk_styles = function () {
       }
 
       body.ugi-route-dashboard .ugi-orbit-node {
-        transform: scale(0.84) !important;
+        transform: scale(0.9) !important;
         transform-origin: center !important;
       }
 

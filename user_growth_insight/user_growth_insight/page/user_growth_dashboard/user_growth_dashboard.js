@@ -13,6 +13,11 @@ class UserGrowthDashboard {
     this.page = page;
     this.wrapper = $(wrapper);
     this.filters = {};
+    this.filterOptions = {
+      region: ['华东', '华南', '华北', '西南', '华中', '西北'],
+      channel: ['官网注册', '渠道伙伴', '销售外呼', '内容投放', '线下活动', '老客推荐'],
+      plan: ['Starter', 'Growth', 'Business', 'Enterprise'],
+    };
     this.escape = (value) => {
       const text = String(value === null || value === undefined ? '' : value);
       if (frappe.utils && frappe.utils.escape_html) {
@@ -38,21 +43,21 @@ class UserGrowthDashboard {
       label: __('地区'),
       fieldtype: 'Select',
       fieldname: 'region',
-      options: '\n华东\n华南\n华北\n西南\n华中\n西北',
+      options: `\n${this.filterOptions.region.join('\n')}`,
       change: () => this.applyFilters(),
     });
     this.channel = this.page.add_field({
       label: __('渠道'),
       fieldtype: 'Select',
       fieldname: 'channel',
-      options: '\n官网注册\n渠道伙伴\n销售外呼\n内容投放\n线下活动\n老客推荐',
+      options: `\n${this.filterOptions.channel.join('\n')}`,
       change: () => this.applyFilters(),
     });
     this.plan = this.page.add_field({
       label: __('套餐'),
       fieldtype: 'Select',
       fieldname: 'plan',
-      options: '\nStarter\nGrowth\nBusiness\nEnterprise',
+      options: `\n${this.filterOptions.plan.join('\n')}`,
       change: () => this.applyFilters(),
     });
 
@@ -65,9 +70,22 @@ class UserGrowthDashboard {
             <p class="ugi-kicker">USER GROWTH OBSERVATORY</p>
             <h1>增长态势观测台</h1>
           </div>
-          <div class="ugi-time">
-            <span class="ugi-dot"></span>
-            <span data-role="updated-at">Syncing</span>
+          <div class="ugi-command">
+            <div class="ugi-filters">
+              ${this.renderFilter('region', '地区', this.filterOptions.region)}
+              ${this.renderFilter('channel', '渠道', this.filterOptions.channel)}
+              ${this.renderFilter('plan', '套餐', this.filterOptions.plan)}
+            </div>
+            <div class="ugi-actions">
+              <a href="/app/query-report/User%20Growth%20Overview">报表</a>
+              <a href="/app/user-service-lifecycle">数据</a>
+              <button type="button" data-action="fullscreen">全屏</button>
+              <button type="button" data-action="refresh">刷新</button>
+              <div class="ugi-time">
+                <span class="ugi-dot"></span>
+                <span data-role="updated-at">Syncing</span>
+              </div>
+            </div>
           </div>
         </header>
         <section class="ugi-kpis" data-role="kpis"></section>
@@ -114,18 +132,54 @@ class UserGrowthDashboard {
 
   bind() {
     $(window).on('resize.user-growth-dashboard', frappe.utils.debounce(() => this.render(this.data), 150));
+    this.container.on('change', '[data-filter]', () => this.applyFilters());
+    this.container.on('click', '[data-action="refresh"]', () => this.refresh());
+    this.container.on('click', '[data-action="fullscreen"]', () => this.toggleFullscreen());
+  }
+
+  renderFilter(name, label, options) {
+    return `
+      <label class="ugi-filter">
+        <span>${this.escape(label)}</span>
+        <select data-filter="${this.escape(name)}">
+          <option value="">全部</option>
+          ${options.map((option) => `<option value="${this.escape(option)}">${this.escape(option)}</option>`).join('')}
+        </select>
+      </label>
+    `;
   }
 
   applyFilters() {
     this.filters = {
-      region: this.region.get_value(),
-      channel: this.channel.get_value(),
-      plan: this.plan.get_value(),
+      region: this.container.find('[data-filter="region"]').val() || '',
+      channel: this.container.find('[data-filter="channel"]').val() || '',
+      plan: this.container.find('[data-filter="plan"]').val() || '',
     };
+
+    this.region.set_value(this.filters.region);
+    this.channel.set_value(this.filters.channel);
+    this.plan.set_value(this.filters.plan);
     this.refresh();
   }
 
+  toggleFullscreen() {
+    const target = this.container.get(0);
+    if (!target) return;
+
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+      return;
+    }
+
+    if (target.requestFullscreen) {
+      target.requestFullscreen().catch(() => {
+        frappe.show_alert({ message: __('浏览器未允许进入全屏'), indicator: 'orange' });
+      });
+    }
+  }
+
   refresh() {
+    this.container.addClass('is-loading');
     frappe.call({
       method: 'user_growth_insight.api.dashboard.get_dashboard_data',
       args: { filters: this.filters },
@@ -133,6 +187,9 @@ class UserGrowthDashboard {
       callback: (response) => {
         this.data = response.message || {};
         this.render(this.data);
+      },
+      always: () => {
+        this.container.removeClass('is-loading');
       },
     });
   }
@@ -142,7 +199,7 @@ class UserGrowthDashboard {
     this.container.find('[data-role="updated-at"]').text(frappe.datetime.now_datetime());
     this.container.find('[data-role="signal-score"]').text(`${data.logo_metric || 0}%`);
     this.renderKpis(data);
-        this.renderLineChart(data.monthly);
+    this.renderLineChart(data.monthly);
     this.renderBars('[data-role="regions"]', data.region_distribution);
     this.renderOrbit(data.channel_distribution);
     this.renderBars('[data-role="plans"]', data.plan_distribution);

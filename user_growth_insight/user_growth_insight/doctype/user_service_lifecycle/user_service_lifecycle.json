@@ -1,0 +1,193 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:user_id",
+  "creation": "2026-07-01 00:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "identity_section",
+    "user_id",
+    "user_name",
+    "account_owner",
+    "service_section",
+    "service_status",
+    "plan",
+    "monthly_recurring_revenue",
+    "device_count",
+    "opened_on",
+    "churned_on",
+    "growth_section",
+    "region",
+    "channel",
+    "risk_level",
+    "churn_reason",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "identity_section",
+      "fieldtype": "Section Break",
+      "label": "用户身份"
+    },
+    {
+      "fieldname": "user_id",
+      "fieldtype": "Data",
+      "in_global_search": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "用户编号",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "user_name",
+      "fieldtype": "Data",
+      "in_global_search": 1,
+      "in_list_view": 1,
+      "label": "用户名称",
+      "reqd": 1
+    },
+    {
+      "fieldname": "account_owner",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "客户成功负责人"
+    },
+    {
+      "fieldname": "service_section",
+      "fieldtype": "Section Break",
+      "label": "服务状态"
+    },
+    {
+      "default": "活跃",
+      "fieldname": "service_status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "服务状态",
+      "options": "试用\n活跃\n流失",
+      "reqd": 1
+    },
+    {
+      "fieldname": "plan",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "套餐",
+      "options": "Starter\nGrowth\nBusiness\nEnterprise",
+      "reqd": 1
+    },
+    {
+      "fieldname": "monthly_recurring_revenue",
+      "fieldtype": "Currency",
+      "in_list_view": 1,
+      "label": "MRR",
+      "non_negative": 1,
+      "reqd": 1
+    },
+    {
+      "fieldname": "device_count",
+      "fieldtype": "Int",
+      "label": "设备数",
+      "non_negative": 1
+    },
+    {
+      "fieldname": "opened_on",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "开通日期",
+      "reqd": 1
+    },
+    {
+      "fieldname": "churned_on",
+      "fieldtype": "Date",
+      "in_standard_filter": 1,
+      "label": "流失日期"
+    },
+    {
+      "fieldname": "growth_section",
+      "fieldtype": "Section Break",
+      "label": "增长归因"
+    },
+    {
+      "fieldname": "region",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "地区",
+      "options": "华东\n华南\n华北\n西南\n华中\n西北",
+      "reqd": 1
+    },
+    {
+      "fieldname": "channel",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "来源渠道",
+      "options": "官网注册\n渠道伙伴\n销售外呼\n内容投放\n线下活动\n老客推荐",
+      "reqd": 1
+    },
+    {
+      "fieldname": "risk_level",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "风险等级",
+      "options": "低\n中\n高"
+    },
+    {
+      "depends_on": "eval:doc.service_status == '流失'",
+      "fieldname": "churn_reason",
+      "fieldtype": "Select",
+      "in_standard_filter": 1,
+      "label": "流失原因",
+      "options": "\n预算缩减\n功能不匹配\n迁移到竞品\n项目结束\n体验不稳定\n采购周期暂停"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "备注"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2026-07-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "User Growth Insight",
+  "name": "User Service Lifecycle",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Sales User",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "quick_entry": 0,
+  "sort_field": "opened_on",
+  "sort_order": "DESC",
+  "states": [],
+  "track_changes": 1
+}

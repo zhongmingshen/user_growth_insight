@@ -1,0 +1,25 @@
+{
+  "add_total_row": 1,
+  "creation": "2026-07-01 00:00:00.000000",
+  "disabled": 0,
+  "doctype": "Report",
+  "idx": 0,
+  "is_standard": "Yes",
+  "modified": "2026-07-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "User Growth Insight",
+  "name": "User Growth Overview",
+  "owner": "Administrator",
+  "prepared_report": 0,
+  "ref_doctype": "User Service Lifecycle",
+  "report_name": "User Growth Overview",
+  "report_type": "Script Report",
+  "roles": [
+    {
+      "role": "System Manager"
+    },
+    {
+      "role": "Sales User"
+    }
+  ]
+}

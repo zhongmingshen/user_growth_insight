@@ -1,0 +1,6 @@
+include *.md
+include *.txt
+recursive-include user_growth_insight *.json
+recursive-include user_growth_insight *.py
+recursive-include user_growth_insight *.js
+recursive-include user_growth_insight *.css

@@ -1,0 +1,14 @@
+{
+  "app_name": "user_growth_insight",
+  "creation": "2026-07-01 00:00:00.000000",
+  "custom": 0,
+  "docstatus": 0,
+  "doctype": "Module Def",
+  "idx": 0,
+  "modified": "2026-07-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module_name": "User Growth Insight",
+  "name": "User Growth Insight",
+  "owner": "Administrator",
+  "package": "User Growth Insight"
+}

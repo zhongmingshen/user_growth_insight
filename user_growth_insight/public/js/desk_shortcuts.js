@@ -127,7 +127,7 @@ user_growth_insight.ensure_desk_styles = function () {
       }
 
       body.ugi-route-dashboard .ugi-main {
-        height: calc(100% - 170px) !important;
+        height: calc(100% - 200px) !important;
         display: grid !important;
         grid-template-columns: minmax(0, 1.5fr) minmax(245px, 0.72fr) minmax(245px, 0.72fr) !important;
         grid-template-rows: repeat(2, minmax(0, 1fr)) !important;

@@ -65,6 +65,8 @@
   font-weight: 520;
   line-height: 1;
   letter-spacing: 0;
+  color: rgba(247, 248, 248, 0.2);
+  text-shadow: 0 0 34px rgba(194, 239, 78, 0.1);
 }
 
 .ugi-time {

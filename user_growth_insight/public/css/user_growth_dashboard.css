@@ -9,10 +9,11 @@
   --violet: #7170ff;
   --pink: #fa7faa;
   position: relative;
-  min-height: calc(100vh - 112px);
+  height: calc(100vh - 164px);
+  min-height: 680px;
   overflow: hidden;
   margin: -15px -15px 0;
-  padding: 28px 32px 30px;
+  padding: 22px 32px 24px;
   color: var(--text);
   background:
     radial-gradient(circle at 12% 12%, rgba(113, 112, 255, 0.2), transparent 28%),
@@ -45,7 +46,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .ugi-kicker,
@@ -61,7 +62,7 @@
 
 .ugi-hero h1 {
   margin: 6px 0 0;
-  font-size: clamp(34px, 4.2vw, 58px);
+  font-size: clamp(32px, 3.7vw, 50px);
   font-weight: 520;
   line-height: 1;
   letter-spacing: 0;
@@ -94,7 +95,7 @@
   display: grid;
   grid-template-columns: repeat(5, minmax(150px, 1fr));
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .ugi-kpi,
@@ -106,16 +107,16 @@
 }
 
 .ugi-kpi {
-  min-height: 132px;
-  padding: 16px;
+  min-height: 108px;
+  padding: 14px 16px;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .ugi-kpi strong {
   display: block;
-  margin-top: 14px;
-  font-size: clamp(28px, 2.7vw, 40px);
+  margin-top: 10px;
+  font-size: clamp(28px, 2.4vw, 38px);
   font-weight: 540;
   line-height: 1;
   letter-spacing: 0;
@@ -124,7 +125,7 @@
 
 .ugi-kpi em {
   display: block;
-  margin-top: 9px;
+  margin-top: 7px;
   color: var(--muted);
   font-size: 13px;
   font-style: normal;
@@ -132,7 +133,7 @@
 
 .ugi-kpi small {
   display: block;
-  margin-top: 7px;
+  margin-top: 4px;
   color: rgba(208, 214, 224, 0.58);
   font-size: 11px;
 }
@@ -144,7 +145,7 @@
 }
 
 .ugi-panel {
-  min-height: 252px;
+  min-height: 218px;
   padding: 17px 18px;
   border-radius: 8px;
   overflow: hidden;
@@ -152,7 +153,7 @@
 
 .ugi-panel-large {
   grid-row: span 2;
-  min-height: 516px;
+  min-height: 446px;
 }
 
 .ugi-panel-head {
@@ -160,7 +161,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .ugi-panel-head strong {
@@ -171,7 +172,7 @@
 
 .ugi-line-chart {
   width: 100%;
-  height: 430px;
+  height: 368px;
   display: block;
 }
 
@@ -249,7 +250,7 @@
 
 .ugi-orbit {
   position: relative;
-  min-height: 178px;
+  min-height: 150px;
 }
 
 .ugi-orbit-node {
@@ -349,6 +350,60 @@ body[data-route^="user-growth-dashboard"] .ugi-desk-jump {
 .ugi-empty {
   color: var(--muted);
   font-size: 13px;
+}
+
+body[data-route^="user-growth-dashboard"] {
+  overflow: hidden;
+}
+
+body[data-route^="user-growth-dashboard"] .page-head {
+  min-height: 54px;
+}
+
+body[data-route^="user-growth-dashboard"] .page-head .page-title {
+  min-height: 42px;
+}
+
+body[data-route^="user-growth-dashboard"] .page-form {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+body[data-route^="user-growth-dashboard"] .page-content,
+body[data-route^="user-growth-dashboard"] .layout-main-section {
+  overflow: hidden;
+}
+
+body[data-route^="query-report/User%20Growth%20Overview"],
+body[data-route^="query-report/User Growth Overview"] {
+  overflow: hidden;
+}
+
+body[data-route^="query-report/User%20Growth%20Overview"] .page-form,
+body[data-route^="query-report/User Growth Overview"] .page-form {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+body[data-route^="query-report/User%20Growth%20Overview"] .report-wrapper,
+body[data-route^="query-report/User Growth Overview"] .report-wrapper {
+  height: calc(100vh - 176px);
+  overflow: hidden;
+}
+
+body[data-route^="query-report/User%20Growth%20Overview"] .report-wrapper .datatable,
+body[data-route^="query-report/User Growth Overview"] .report-wrapper .datatable {
+  max-height: calc(100vh - 535px);
+  overflow: auto;
+}
+
+body[data-route^="user-service-lifecycle"] .layout-main-section {
+  max-height: calc(100vh - 132px);
+  overflow: auto;
+}
+
+body[data-route^="user-service-lifecycle"] .list-row-container {
+  max-height: none;
 }
 
 @media (max-width: 1100px) {

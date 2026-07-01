@@ -31,17 +31,18 @@ def get_columns():
 
 
 def get_chart(data):
+    chart_rows = data[-18:] if len(data) > 18 else data
     return {
         "data": {
-            "labels": [row["month"] for row in data],
+            "labels": [row["month"] for row in chart_rows],
             "datasets": [
-                {"name": _("新增用户"), "values": [row["new_users"] for row in data]},
-                {"name": _("流失用户"), "values": [row["churned_users"] for row in data]},
-                {"name": _("净增长"), "values": [row["net_growth"] for row in data]},
+                {"name": _("新增用户"), "values": [row["new_users"] for row in chart_rows]},
+                {"name": _("流失用户"), "values": [row["churned_users"] for row in chart_rows]},
+                {"name": _("净增长"), "values": [row["net_growth"] for row in chart_rows]},
             ],
         },
         "type": "line",
-        "height": 280,
+        "height": 240,
         "colors": ["#c2ef4e", "#fa7faa", "#7170ff"],
     }
 

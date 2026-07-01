@@ -8,6 +8,7 @@ app_license = "MIT"
 # The stylesheet is scoped to `.ugi-screen`, so loading it in Desk is safe and
 # keeps the custom Page free of external build dependencies.
 app_include_css = ["/assets/user_growth_insight/css/user_growth_dashboard.css"]
+app_include_js = ["/assets/user_growth_insight/js/desk_shortcuts.js"]
 
 after_install = "user_growth_insight.setup.seed.after_install"
 

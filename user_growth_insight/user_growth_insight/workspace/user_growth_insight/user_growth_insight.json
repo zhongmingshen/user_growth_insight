@@ -1,0 +1,106 @@
+{
+  "charts": [],
+  "content": "[{\"id\":\"ugi_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>User Growth Insight</b></span>\",\"col\":12}},{\"id\":\"ugi_dashboard\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"增长大屏\",\"col\":4}},{\"id\":\"ugi_report\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"增长报表\",\"col\":4}},{\"id\":\"ugi_records\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"生命周期数据\",\"col\":4}},{\"id\":\"ugi_spacer\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ugi_core_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>运营工作区</b></span>\",\"col\":12}},{\"id\":\"ugi_core_card\",\"type\":\"card\",\"data\":{\"card_name\":\"增长分析\",\"col\":4}},{\"id\":\"ugi_data_card\",\"type\":\"card\",\"data\":{\"card_name\":\"数据资产\",\"col\":4}}]",
+  "creation": "2026-07-01 00:00:00.000000",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "bar-chart",
+  "idx": 0,
+  "is_hidden": 0,
+  "label": "User Growth Insight",
+  "links": [
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "增长分析",
+      "link_count": 2,
+      "onboard": 0,
+      "type": "Card Break"
+    },
+    {
+      "dependencies": "",
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "增长态势观测台",
+      "link_count": 0,
+      "link_to": "user-growth-dashboard",
+      "link_type": "Page",
+      "onboard": 0,
+      "type": "Link"
+    },
+    {
+      "dependencies": "User Service Lifecycle",
+      "hidden": 0,
+      "is_query_report": 1,
+      "label": "用户增长数据报表",
+      "link_count": 0,
+      "link_to": "User Growth Overview",
+      "link_type": "Report",
+      "onboard": 0,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "数据资产",
+      "link_count": 1,
+      "onboard": 0,
+      "type": "Card Break"
+    },
+    {
+      "dependencies": "",
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "用户服务开通/流失信息",
+      "link_count": 0,
+      "link_to": "User Service Lifecycle",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+    }
+  ],
+  "modified": "2026-07-01 00:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "User Growth Insight",
+  "name": "User Growth Insight",
+  "number_cards": [],
+  "owner": "Administrator",
+  "parent_page": "",
+  "public": 1,
+  "quick_lists": [],
+  "restrict_to_domain": "",
+  "roles": [
+    {
+      "role": "System Manager"
+    },
+    {
+      "role": "Sales User"
+    }
+  ],
+  "sequence_id": 1.0,
+  "shortcuts": [
+    {
+      "color": "#c2ef4e",
+      "label": "增长大屏",
+      "link_to": "user-growth-dashboard",
+      "type": "Page"
+    },
+    {
+      "color": "#7170ff",
+      "label": "增长报表",
+      "link_to": "User Growth Overview",
+      "type": "Report"
+    },
+    {
+      "color": "#fa7faa",
+      "doc_view": "List",
+      "label": "生命周期数据",
+      "link_to": "User Service Lifecycle",
+      "type": "DocType"
+    }
+  ],
+  "title": "User Growth Insight"
+}

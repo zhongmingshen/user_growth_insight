@@ -20,6 +20,14 @@ class UserGrowthDashboard {
       }
       return $('<div>').text(text).html();
     };
+    this.formatNumber = (value) => Number(value || 0).toLocaleString();
+    this.formatMoney = (value, compact = false) => {
+      const amount = Number(value || 0);
+      if (compact && Math.abs(amount) >= 1000) {
+        return `${(amount / 1000).toFixed(amount >= 100000 ? 1 : 0)}K`;
+      }
+      return amount.toLocaleString(undefined, { maximumFractionDigits: 0 });
+    };
     this.make();
     this.bind();
     this.refresh();
@@ -134,7 +142,7 @@ class UserGrowthDashboard {
     this.container.find('[data-role="updated-at"]').text(frappe.datetime.now_datetime());
     this.container.find('[data-role="signal-score"]').text(`${data.logo_metric || 0}%`);
     this.renderKpis(data);
-    this.renderLineChart(data.monthly);
+        this.renderLineChart(data.monthly);
     this.renderBars('[data-role="regions"]', data.region_distribution);
     this.renderOrbit(data.channel_distribution);
     this.renderBars('[data-role="plans"]', data.plan_distribution);
@@ -143,17 +151,18 @@ class UserGrowthDashboard {
 
   renderKpis(data) {
     const kpis = [
-      ['活跃用户', data.active_users, 'ACTIVE'],
-      ['累计流失', data.churned_users, 'CHURN'],
-      ['当前 MRR', frappe.format(data.total_mrr, { fieldtype: 'Currency' }), 'MRR'],
-      ['设备覆盖', data.total_devices, 'DEVICES'],
-      ['平均 MRR', frappe.format(data.avg_mrr, { fieldtype: 'Currency' }), 'ARPA'],
+      { label: '活跃用户', value: this.formatNumber(data.active_users), code: 'ACTIVE', hint: 'accounts' },
+      { label: '累计流失', value: this.formatNumber(data.churned_users), code: 'CHURN', hint: 'lost' },
+      { label: '当前 MRR', value: this.formatMoney(data.total_mrr, true), code: 'MRR', hint: 'CNY / month' },
+      { label: '设备覆盖', value: this.formatNumber(data.total_devices), code: 'DEVICES', hint: 'devices' },
+      { label: '平均 MRR', value: this.formatMoney(data.avg_mrr), code: 'ARPA', hint: 'CNY / account' },
     ];
-    this.container.find('[data-role="kpis"]').html(kpis.map(([label, value, code]) => `
+    this.container.find('[data-role="kpis"]').html(kpis.map((item) => `
       <article class="ugi-kpi">
-        <span>${this.escape(code)}</span>
-        <strong>${this.escape(value)}</strong>
-        <em>${this.escape(label)}</em>
+        <span>${this.escape(item.code)}</span>
+        <strong>${this.escape(item.value)}</strong>
+        <em>${this.escape(item.label)}</em>
+        <small>${this.escape(item.hint)}</small>
       </article>
     `).join(''));
   }

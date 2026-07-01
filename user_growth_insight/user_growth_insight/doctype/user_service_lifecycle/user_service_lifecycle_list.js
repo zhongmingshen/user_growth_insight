@@ -1,5 +1,13 @@
 frappe.listview_settings['User Service Lifecycle'] = {
   add_fields: ['service_status', 'risk_level', 'monthly_recurring_revenue', 'region'],
+  onload(listview) {
+    listview.page.add_inner_button(__('增长大屏'), () => {
+      frappe.set_route('user-growth-dashboard');
+    });
+    listview.page.add_inner_button(__('增长报表'), () => {
+      frappe.set_route('query-report', 'User Growth Overview');
+    });
+  },
   get_indicator(doc) {
     if (doc.service_status === '流失') {
       return [__('流失'), 'red', 'service_status,=,流失'];

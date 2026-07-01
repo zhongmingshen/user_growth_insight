@@ -7,6 +7,7 @@
 - DocType: `User Service Lifecycle`
 - Script Report: `User Growth Overview`
 - Desk Page: `/app/user-growth-dashboard`
+- Desk Workspace: `User Growth Insight`
 - Python API:
   - `user_growth_insight.api.dashboard.get_dashboard_data(filters=None)`
   - `user_growth_insight.api.dashboard.get_growth_series(filters=None)`
@@ -31,9 +32,11 @@ bench --site <site-name> migrate
 
 ## 使用入口
 
-- 单据列表：Desk 搜索 `User Service Lifecycle`
-- 报表：Desk 搜索 `User Growth Overview`
-- 大屏：访问 `/app/user-growth-dashboard`
+- 登录 Frappe Desk 后，左侧进入 `User Growth Insight` 工作台。
+- 所有 Desk 页面右下角会出现快捷入口：`增长大屏`、`增长报表`、`生命周期`。
+- 单据列表：`/app/user-service-lifecycle`
+- 报表：`/app/query-report/User%20Growth%20Overview`
+- 大屏：`/app/user-growth-dashboard`
 
 ## Mock 数据说明
 

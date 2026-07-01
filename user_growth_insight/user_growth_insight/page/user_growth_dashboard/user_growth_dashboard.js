@@ -5,6 +5,7 @@ frappe.pages['user-growth-dashboard'].on_page_load = function (wrapper) {
     single_column: true,
   });
 
+  $(window).off('.user-growth-dashboard');
   wrapper.growth_dashboard = new UserGrowthDashboard(page, wrapper);
 };
 
@@ -131,6 +132,7 @@ class UserGrowthDashboard {
   }
 
   bind() {
+    $(window).off('.user-growth-dashboard');
     $(window).on('resize.user-growth-dashboard', frappe.utils.debounce(() => this.render(this.data), 150));
     this.container.on('change', '[data-filter]', () => this.applyFilters());
     this.container.on('click', '[data-action="refresh"]', () => this.refresh());

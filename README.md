@@ -38,6 +38,16 @@ bench --site <site-name> migrate
 - 报表：`/app/query-report/User%20Growth%20Overview`
 - 大屏：`/app/user-growth-dashboard`
 
+## 部署与验收文档
+
+完整部署文档见 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)，包含系统要求、环境安装、bench/site/app 安装、启动命令、mock 数据说明、验收步骤和常见问题。
+
+最终验收截图位于 [docs/screenshots/final](docs/screenshots/final)：
+
+- `01-user-growth-dashboard.png`
+- `02-user-growth-overview-report.png`
+- `03-user-service-lifecycle-list.png`
+
 ## Mock 数据说明
 
 安装 App 时，`after_install` 会读取内置 mock 数据并插入 `User Service Lifecycle`。脚本会先检查记录名，已存在的样本不会重复插入。需要重新补齐演示数据时，可在 bench 控制台或 patch 中调用：

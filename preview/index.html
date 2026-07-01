@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Growth Dashboard Preview</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="ugi-screen">
+    <div class="ugi-grid-mist"></div>
+    <header class="ugi-hero">
+      <div>
+        <p class="ugi-kicker">USER GROWTH OBSERVATORY</p>
+        <h1>增长态势观测台</h1>
+      </div>
+      <div class="ugi-filters">
+        <select id="region"><option value="">全部地区</option></select>
+        <select id="channel"><option value="">全部渠道</option></select>
+        <select id="plan"><option value="">全部套餐</option></select>
+      </div>
+    </header>
+    <section class="ugi-kpis" id="kpis"></section>
+    <section class="ugi-main">
+      <article class="ugi-panel ugi-panel-large">
+        <div class="ugi-panel-head">
+          <span>Growth Signal</span>
+          <strong id="signal">0%</strong>
+        </div>
+        <svg class="ugi-line-chart" id="lineChart" viewBox="0 0 920 320" preserveAspectRatio="none"></svg>
+      </article>
+      <article class="ugi-panel">
+        <div class="ugi-panel-head"><span>Region Field</span><strong>分布</strong></div>
+        <div class="ugi-bars" id="regions"></div>
+      </article>
+      <article class="ugi-panel">
+        <div class="ugi-panel-head"><span>Channel Orbit</span><strong>来源</strong></div>
+        <div class="ugi-orbit" id="channels"></div>
+      </article>
+      <article class="ugi-panel">
+        <div class="ugi-panel-head"><span>Plan Stack</span><strong>套餐</strong></div>
+        <div class="ugi-bars compact" id="plans"></div>
+      </article>
+      <article class="ugi-panel">
+        <div class="ugi-panel-head"><span>Churn Reasons</span><strong>流失</strong></div>
+        <div class="ugi-reasons" id="churn"></div>
+      </article>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>

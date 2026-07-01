@@ -54,3 +54,17 @@ python -m compileall user_growth_insight
 ```
 
 `scripts/verify_app.py` 会校验 Frappe 关键文件、JSON 语法、mock 数据数量、字段覆盖、报表/Page/API 文件存在性，以及独立聚合逻辑是否能产出新增、流失、净增长、MRR、地区与渠道分布。
+
+## 本地大屏预览
+
+如果暂时没有完整 Frappe bench 环境，可以先启动内置预览服务。它复用同一份 mock 数据和同一套 Python 聚合逻辑，用于检查大屏视觉与指标：
+
+```bash
+python preview/server.py 8088
+```
+
+然后访问：
+
+```text
+http://127.0.0.1:8088
+```

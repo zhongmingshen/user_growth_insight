@@ -252,6 +252,162 @@ user_growth_insight.ensure_desk_styles = function () {
         transform-origin: center !important;
       }
 
+      @media (min-width: 1181px) and (max-width: 1450px) {
+        body.ugi-route-dashboard .ugi-screen {
+          padding: 18px 22px 20px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-hero {
+          grid-template-columns: minmax(280px, 0.74fr) minmax(480px, 1.26fr) !important;
+          gap: 14px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-kpis {
+          grid-template-columns: repeat(5, minmax(118px, 1fr)) !important;
+        }
+
+        body.ugi-route-dashboard .ugi-main {
+          grid-template-columns: minmax(420px, 1.2fr) minmax(240px, 0.7fr) minmax(240px, 0.7fr) !important;
+        }
+      }
+
+      @media (max-width: 1180px) {
+        body.ugi-route-dashboard {
+          overflow: hidden !important;
+        }
+
+        body.ugi-route-dashboard .ugi-screen {
+          position: fixed !important;
+          inset: 0 !important;
+          width: 100vw !important;
+          height: 100vh !important;
+          padding: 16px !important;
+          overflow: hidden !important;
+        }
+
+        body.ugi-route-dashboard .ugi-hero {
+          display: grid !important;
+          grid-template-columns: minmax(240px, 0.85fr) minmax(300px, 1.15fr) !important;
+          gap: 12px !important;
+          margin-bottom: 10px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-hero h1 {
+          font-size: clamp(26px, 4vw, 36px) !important;
+        }
+
+        body.ugi-route-dashboard .ugi-command {
+          gap: 7px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-filters,
+        body.ugi-route-dashboard .ugi-actions {
+          flex-wrap: wrap !important;
+          gap: 6px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-filter {
+          grid-template-columns: auto minmax(78px, 1fr) !important;
+          padding: 6px 8px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-actions a,
+        body.ugi-route-dashboard .ugi-actions button,
+        body.ugi-route-dashboard .ugi-time {
+          min-height: 30px !important;
+          padding: 7px 9px !important;
+          font-size: 11px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-kpis {
+          grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+          gap: 8px !important;
+          margin-bottom: 8px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-kpi {
+          min-height: 76px !important;
+          padding: 9px 10px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-kpi strong {
+          font-size: clamp(20px, 3vw, 28px) !important;
+        }
+
+        body.ugi-route-dashboard .ugi-kpi em,
+        body.ugi-route-dashboard .ugi-kpi small {
+          font-size: 10px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-main {
+          height: calc(100vh - 190px) !important;
+          grid-template-columns: minmax(360px, 1.25fr) minmax(210px, 0.75fr) !important;
+          grid-template-rows: repeat(4, minmax(0, 1fr)) !important;
+          gap: 8px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-panel {
+          padding: 10px 11px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-panel-large {
+          grid-column: 1 !important;
+          grid-row: 1 / span 4 !important;
+        }
+
+        body.ugi-route-dashboard .ugi-panel:not(.ugi-panel-large) {
+          min-height: 0 !important;
+        }
+
+        body.ugi-route-dashboard .ugi-panel-head {
+          margin-bottom: 6px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-bars,
+        body.ugi-route-dashboard .ugi-reasons {
+          gap: 7px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-bar-row {
+          grid-template-columns: 56px 1fr 24px !important;
+          gap: 7px !important;
+          font-size: 11px !important;
+        }
+
+        body.ugi-route-dashboard .ugi-orbit-node {
+          transform: scale(0.72) !important;
+        }
+      }
+
+      @media (max-width: 760px) {
+        body.ugi-route-dashboard .ugi-hero {
+          grid-template-columns: 1fr !important;
+        }
+
+        body.ugi-route-dashboard .ugi-command,
+        body.ugi-route-dashboard .ugi-filters,
+        body.ugi-route-dashboard .ugi-actions {
+          justify-items: start !important;
+          justify-content: flex-start !important;
+        }
+
+        body.ugi-route-dashboard .ugi-kpis {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+
+        body.ugi-route-dashboard .ugi-main {
+          height: calc(100vh - 295px) !important;
+          grid-template-columns: 1fr !important;
+          grid-template-rows: minmax(260px, 1fr) repeat(4, minmax(90px, 0.35fr)) !important;
+          overflow: auto !important;
+        }
+
+        body.ugi-route-dashboard .ugi-panel-large {
+          grid-column: 1 !important;
+          grid-row: auto !important;
+        }
+      }
+
       body.ugi-route-growth-report .page-content,
       body.ugi-route-growth-report .layout-main-section {
         height: calc(100vh - 126px) !important;
@@ -339,13 +495,11 @@ user_growth_insight.ensure_desk_styles = function () {
       }
 
       @media (max-width: 1180px) {
-        body.ugi-route-dashboard,
         body.ugi-route-growth-report,
         body.ugi-route-lifecycle {
           overflow: auto !important;
         }
 
-        body.ugi-route-dashboard .ugi-screen,
         body.ugi-route-growth-report .page-content,
         body.ugi-route-growth-report .layout-main-section,
         body.ugi-route-lifecycle .page-content,

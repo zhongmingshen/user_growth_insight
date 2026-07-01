@@ -554,5 +554,7 @@ user_growth_insight.refresh_desk_shell = function () {
   setTimeout(user_growth_insight.apply_route_state, 250);
 };
 
-$(document).on('page-change', user_growth_insight.refresh_desk_shell);
+$(document)
+  .off('page-change.user-growth-insight')
+  .on('page-change.user-growth-insight', user_growth_insight.refresh_desk_shell);
 $(document).ready(user_growth_insight.refresh_desk_shell);

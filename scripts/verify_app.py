@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 
@@ -98,6 +99,14 @@ def main() -> None:
     statuses = {record.get("service_status") for record in records}
     if not {"活跃", "试用", "流失"}.issubset(statuses):
         fail("mock data must include active, trial, and churned users")
+    invalid_churn_dates = [
+        record["name"]
+        for record in records
+        if record.get("churned_on")
+        and date.fromisoformat(record["churned_on"]) < date.fromisoformat(record["opened_on"])
+    ]
+    if invalid_churn_dates:
+        fail(f"mock data has churn dates before open dates: {invalid_churn_dates}")
 
     metrics = import_metrics()
     summary = metrics.aggregate_lifecycle(records)
